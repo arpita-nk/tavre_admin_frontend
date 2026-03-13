@@ -1,0 +1,39 @@
+.add-apparel-modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.headerTitle {
+  color: '#C9A84C';
+  font-size: '22px';
+  font-weight: '600';
+  letter-spacing: '0.15em';
+  text-transform: 'uppercase';
+  margin: 0;
+  font-family: "'Cormorant Garamond', Georgia, serif";
+}
+
+.closeBtn {
+  background: 'none';
+  border: 'none';
+  color: '#C9A84C';
+  font-size: '20px';
+  cursor: 'pointer';
+  padding: '0';
+  line-height: 1;
+}
+
+.import-modal-header {
+  background: linear-gradient(135deg, #1e3a2e 0%, #2d5a45 100%);
+  color: #d4af37;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.import-modal-body {
+  padding: 40px;
+  background-color: #f8f9fa;
+}
