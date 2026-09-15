@@ -1,16 +1,92 @@
-# React + Vite
+# Tavré Admin Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Admin dashboard for **Tavré**, a premium clothing brand. Built with React 19 + Vite, this app lets admins manage products, inventory, orders, and customers.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Authentication** — token-based admin login
+- **Dashboard** — overview landing page
+- **Products** — view, search, and add new products
+- **Inventory** — bulk import products via CSV with column mapping
+- **Orders** — order management
+- **Customers** — customer management
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- [React Router 7](https://reactrouter.com/) for routing
+- [React Bootstrap](https://react-bootstrap.github.io/) for UI components
+- [React Icons](https://react-icons.github.io/react-icons/)
+- ESLint for linting
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (LTS recommended)
+- A running instance of the Tavré backend API (see [Configuration](#configuration))
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+The app runs on Vite's default dev server (usually `http://localhost:5173`).
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Configuration
+
+This app expects a backend API. Currently the API base URL (`http://localhost:3000`) is hardcoded in:
+- `src/apis/fetchDataApi.js`
+- `src/component/pages/Login.jsx`
+
+> **TODO:** Move this to an environment variable (e.g. `VITE_API_BASE_URL`) so it can be configured per environment.
+
+## Project Structure
+
+```
+src/
+├── apis/            # API request helpers
+├── assets/          # Images/logos
+├── component/
+│   ├── forms/        # Reusable form components
+│   ├── layouts/       # AdminLayout, SidebarMenu
+│   ├── modals/        # AddProductModal, ImportModal
+│   └── pages/         # Login, Dashboard, Products, Inventory, Orders, Customers
+├── styles/          # Page/component-specific CSS
+├── App.jsx          # Routes
+└── main.jsx         # Entry point
+```
+
+## Known Issues
+
+- Login does not currently persist the auth token to `localStorage`, which `ProtectedRoute` relies on — needs a fix so successful logins actually unlock protected routes.
+- `App.jsx` imports `./component/Layouts/AdminLayout` (capitalized), but the folder is `component/layouts` (lowercase). This works on case-insensitive filesystems but will fail on Linux/CI — rename the import or the folder to match.
+
+## License
+
+_Add license info here._
